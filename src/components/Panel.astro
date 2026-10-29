@@ -1,0 +1,80 @@
+---
+const btn = 'flex justify-between bg-primario px-5 py-4.5 text-left text-[13px] uppercase tracking-[0.1em] text-tinta hover:bg-tinta hover:text-crema';
+const qty = 'size-9 bg-white text-base hover:bg-tinta hover:text-crema';
+const pad = 'px-[clamp(20px,3vw,40px)]';
+---
+<div id="backdrop" data-close-panel class="scrim fixed inset-0 z-70 bg-tinta/50"></div>
+<aside id="panel" role="dialog" aria-modal="true" aria-label="Panel" class="sheet fixed inset-y-0 right-0 z-71 flex w-[min(var(--panel-w,480px),100%)] flex-col overflow-y-auto bg-crema text-tinta">
+  <div class={`flex items-baseline justify-between ${pad} py-7`}>
+    <span id="panel-label" class="eyebrow text-verde"></span>
+    <button data-close-panel class="link-action hover:text-verde">Cerrar</button>
+  </div>
+
+  <div id="view-product" hidden class={`flex-col gap-6 ${pad} pb-10 [&:not([hidden])]:flex`}>
+    <div class="aspect-[4/5] overflow-hidden bg-primario"><div id="prod-img" role="img" class="size-full bg-cover bg-center"></div></div>
+    <div class="flex items-baseline justify-between gap-4">
+      <h3 id="prod-name" class="m-0 font-display text-[30px] font-medium tracking-[-0.03em]"></h3>
+      <span id="prod-price" class="font-display text-xl"></span>
+    </div>
+    <p id="prod-long" class="m-0 text-[15px] leading-[1.65]"></p>
+    <div class="flex flex-col gap-2.5">
+      <span class="text-xs uppercase tracking-[0.1em] opacity-70">Acabado · <span id="prod-finish-name"></span></span>
+      <div id="prod-finishes" class="flex flex-wrap gap-1.5"></div>
+    </div>
+    <div class="flex flex-col gap-1.5 text-[13px]">
+      <span><span class="opacity-60">Material </span><span id="prod-material"></span></span>
+      <span><span class="opacity-60">Dimensiones </span><span id="prod-dims"></span></span>
+      <span><span class="opacity-60">Plazo </span>4–6 semanas, hecho por encargo</span>
+    </div>
+    <button id="prod-add" class={btn}><span id="prod-add-label"></span><span>→</span></button>
+    <button data-info="muestras" class="link-action self-start underline underline-offset-5 opacity-75 hover:opacity-100">Pedir una muestra de este acabado</button>
+  </div>
+
+  <article id="view-article" hidden class="flex-col gap-7 px-[clamp(20px,4vw,56px)] pb-16 [&:not([hidden])]:flex">
+    <span id="art-meta" class="text-xs uppercase tracking-[0.1em] opacity-70"></span>
+    <h3 id="art-title" class="m-0 font-display text-[clamp(30px,3.4vw,44px)] leading-[1.05] font-medium tracking-[-0.035em] text-balance"></h3>
+    <div class="aspect-[3/2] overflow-hidden"><div id="art-img" role="img" class="size-full bg-cover bg-center"></div></div>
+    <div id="art-body" class="flex flex-col gap-7"></div>
+    <span class="text-[13px] opacity-70">Texto de <span id="art-author"></span></span>
+    <button id="art-next" class="link-action self-start text-left text-verde underline underline-offset-5 hover:text-tinta"></button>
+  </article>
+
+  <div id="view-info" hidden class={`flex-col gap-6 ${pad} pb-12 [&:not([hidden])]:flex`}>
+    <h3 id="info-title" class="m-0 font-display text-[30px] leading-[1.1] font-medium tracking-[-0.03em]"></h3>
+    <div id="info-items" class="flex flex-col gap-6"></div>
+    <a href="mailto:studio@pausa.objects" class="link-action self-start text-verde underline underline-offset-5">Escribir al estudio</a>
+  </div>
+
+  <div id="view-cart" hidden class={`flex-1 flex-col gap-8 ${pad} pb-10 [&:not([hidden])]:flex`}>
+    <div id="cart-empty" hidden class="flex-col gap-5 pt-10 [&:not([hidden])]:flex">
+      <p class="m-0 font-display text-[26px] tracking-[-0.02em]">Tu bolsa está vacía.</p>
+      <a href="#objetos" data-close-panel class="link-action text-verde underline underline-offset-5">Ver los objetos</a>
+    </div>
+    <div id="cart-lines" class="flex flex-col gap-8"></div>
+    <div id="cart-footer" hidden class="mt-auto flex-col gap-4 [&:not([hidden])]:flex">
+      <div class="flex items-baseline justify-between font-display text-xl"><span>Subtotal</span><span id="cart-subtotal"></span></div>
+      <span class="text-[13px] opacity-70">Entrega gratuita con guantes blancos en Italia. 90 € al resto de la UE.</span>
+      <button id="checkout" class={btn}>Continuar al pago<span>→</span></button>
+      <p id="checkout-note" hidden class="m-0 bg-ocre px-4 py-3.5 text-[13px] leading-[1.6]">Esto es una tienda conceptual. Tu selección se guarda, pero no se realizará ningún cobro.</p>
+    </div>
+  </div>
+
+  <template id="line-tpl">
+    <div class="flex items-start gap-4.5">
+      <div class="aspect-square basis-22 shrink-0 overflow-hidden"><div data-img role="img" class="size-full bg-cover bg-center"></div></div>
+      <div class="flex flex-1 flex-col gap-2">
+        <div class="flex items-baseline justify-between gap-3">
+          <span data-name class="font-display text-[17px]"></span>
+          <span data-total class="font-display text-[15px]"></span>
+        </div>
+        <span data-finish class="text-[13px] opacity-70"></span>
+        <div class="flex items-center gap-4 text-[13px]">
+          <button data-dec aria-label="Disminuir cantidad" class={qty}>−</button>
+          <span data-qty></span>
+          <button data-inc aria-label="Aumentar cantidad" class={qty}>+</button>
+          <button data-remove class="ml-auto text-xs uppercase tracking-[0.08em] opacity-65 hover:opacity-100">Quitar</button>
+        </div>
+      </div>
+    </div>
+  </template>
+</aside>

@@ -1,0 +1,33 @@
+---
+const u = (id: string, w: number) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+---
+<section id="proceso" class="bg-crema px-page py-[clamp(96px,13vw,190px)]">
+  <div data-reveal class="mb-[clamp(56px,7vw,104px)] flex flex-wrap items-end justify-between gap-x-16 gap-y-6">
+    <div class="flex max-w-130 flex-col gap-5">
+      <span class="eyebrow text-verde">Cómo se hace una pieza</span>
+      <h2 class="m-0 font-display text-[clamp(30px,3.4vw,48px)] leading-[1.04] font-medium tracking-[-0.035em] text-balance">De un dibujo en Milán a una habitación propia.</h2>
+    </div>
+    <p class="m-0 max-w-90 text-[15px] leading-[1.65] opacity-85">No guardamos nada en un almacén. Cada objeto se fabrica cuando lo pides, con las mismas manos que hicieron el prototipo.</p>
+  </div>
+  <div class="flex flex-wrap items-start gap-x-[clamp(24px,4vw,64px)] gap-y-14">
+    <figure class="m-0 flex flex-[2_1_380px] flex-col gap-4">
+      <div data-reveal="clip" class="aspect-[4/3] overflow-hidden"><img src={u('1504148455328-c376907d081c', 1200)} alt="Herramientas de carpintería dispuestas sobre un banco de trabajo" class="size-full object-cover" /></div>
+      <figcaption data-reveal style="--d:1" class="flex max-w-95 flex-col gap-1.5">
+        <span class="font-display text-[19px] tracking-[-0.01em]">Hecho en Brianza</span>
+        <span class="text-sm leading-[1.6] opacity-80">Tres talleres a menos de veinte kilómetros entre sí: uno para la madera, otro para la piedra y otro para el acero y el vidrio.</span>
+      </figcaption>
+    </figure>
+    <figure class="m-0 mt-[clamp(0px,10vw,160px)] flex max-w-85 flex-[1_1_240px] flex-col gap-4">
+      <div data-reveal="clip" style="--d:1" class="aspect-[3/4] overflow-hidden"><img src={u('1618220179428-22790b461013', 800)} alt="Una silla terminada en una sala tranquila y soleada" class="size-full object-cover" /></div>
+      <figcaption data-reveal style="--d:2" class="flex flex-col gap-1.5">
+        <span class="font-display text-[19px] tracking-[-0.01em]">Entregado en mano</span>
+        <span class="text-sm leading-[1.6] opacity-80">Envuelto en mantas de lana, no en espuma, y colocado donde tú quieras.</span>
+      </figcaption>
+    </figure>
+    <div data-reveal style="--d:2" class="flex max-w-70 flex-[1_1_220px] flex-col gap-4 self-end">
+      <span class="font-display text-[19px] tracking-[-0.01em]">Reparado de por vida</span>
+      <span class="text-sm leading-[1.6] opacity-80">Todo objeto puede volver al taller para reaceitarse, retapizarse o recibir una pieza nueva. Guardamos los planos.</span>
+      <button data-info="cuidados" class="link-action self-start text-verde underline underline-offset-5 hover:text-tinta">Leer la guía de cuidados</button>
+    </div>
+  </div>
+</section>

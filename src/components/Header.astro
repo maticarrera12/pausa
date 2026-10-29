@@ -1,0 +1,37 @@
+---
+const links = [
+  { href: '#coleccion', label: 'Colección' },
+  { href: '#objetos', label: 'Objetos' },
+  { href: '#diario', label: 'Diario' },
+  { href: '#nosotros', label: 'Nosotros' },
+  { href: '#visita', label: 'Visita' },
+];
+---
+<header class="absolute inset-x-0 top-0 z-20 flex items-baseline justify-between gap-6 px-page py-7 text-tinta">
+  <a href="#top" class="font-display text-[22px] font-semibold tracking-[-0.03em]">pausa</a>
+  <nav aria-label="Principal" class="flex gap-9 text-[13px] uppercase tracking-[0.08em] max-[899px]:hidden">
+    {links.map((l) => (
+      <a href={l.href} class="underline decoration-transparent underline-offset-6 transition-[text-decoration-color] duration-250 hover:decoration-tinta">{l.label}</a>
+    ))}
+  </nav>
+  <div class="flex gap-6 text-[13px] uppercase tracking-[0.08em]">
+    <button data-open-cart aria-label="Abrir la bolsa de compra" class="flex items-baseline gap-2 uppercase tracking-[0.08em]">
+      Bolsa
+      <span data-cart-count class="inline-flex h-5 min-w-5 items-center justify-center bg-tinta font-display text-[11px] font-semibold text-crema">0</span>
+    </button>
+    <button data-toggle-menu aria-expanded="false" aria-controls="menu" class="uppercase tracking-[0.08em] min-[900px]:hidden">Menú</button>
+  </div>
+</header>
+
+<div id="menu" role="dialog" aria-label="Menú" class="menu-overlay fixed inset-0 z-60 flex flex-col justify-between bg-primario px-5 pt-7 pb-10 text-tinta">
+  <div class="flex items-baseline justify-between">
+    <span class="font-display text-[22px] font-semibold tracking-[-0.03em]">pausa</span>
+    <button data-toggle-menu class="text-[13px] uppercase tracking-[0.08em]">Cerrar</button>
+  </div>
+  <nav aria-label="Móvil" class="flex flex-col gap-3.5 font-display text-[44px] leading-[1.05] tracking-[-0.03em]">
+    {links.map((l, i) => <a href={l.href} data-toggle-menu data-menu-link style={`--i:${i}`}>{l.label}</a>)}
+  </nav>
+  <p class="m-0 max-w-65 text-[13px] leading-relaxed opacity-85">
+    Estudio y showroom, Via Ventura 14, Milán. Abierto de jueves a sábado.
+  </p>
+</div>

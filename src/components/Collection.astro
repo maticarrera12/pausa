@@ -1,0 +1,26 @@
+---
+const u = (id: string, w: number) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+---
+<section id="coleccion" class="bg-crema px-page pt-[clamp(96px,13vw,190px)] pb-[clamp(64px,8vw,120px)]">
+  <div class="flex flex-wrap items-start gap-x-[clamp(32px,6vw,96px)] gap-y-12">
+    <div data-reveal class="flex max-w-105 flex-[1_1_300px] flex-col gap-6 pt-[clamp(0px,8vw,120px)]">
+      <span class="eyebrow text-verde">La colección</span>
+      <h2 class="m-0 font-display text-[clamp(32px,3.6vw,52px)] leading-[1.02] font-medium tracking-[-0.035em] text-balance">Formas pensadas. Objetos cotidianos.</h2>
+      <p class="m-0 max-w-90 text-base leading-[1.65] text-pretty">Once piezas, dibujadas en nuestro estudio de Milán y fabricadas por tres talleres familiares de Brianza. Cada una nació de una pregunta sobre un gesto: cómo te sientas, dónde apoyas una taza, qué hace la luz a las siete de la tarde.</p>
+    </div>
+    <figure class="m-0 flex flex-[2_1_520px] flex-col gap-3">
+      <div data-reveal="clip" class="aspect-[3/2] overflow-hidden">
+        <img src={u('1586023492125-27b2c045efd7', 1600)} alt="Una sala tranquila con un sillón, una mesa auxiliar y una planta bajo luz suave de día" class="size-full object-cover transition-transform duration-500 ease-[cubic-bezier(.23,1,.32,1)] hover:scale-[1.02]" />
+      </div>
+      <figcaption class="text-xs opacity-70">El apartamento de Brera, fotografiado a finales de septiembre.</figcaption>
+    </figure>
+  </div>
+  <div class="mt-[clamp(40px,6vw,88px)] flex justify-start pl-[clamp(0px,14vw,220px)]">
+    <figure data-reveal style="--d:1" class="m-0 flex w-[min(300px,70%)] flex-col gap-3">
+      <div class="aspect-square overflow-hidden">
+        <img loading="lazy" src={u('1541123437800-1bb1317badc2', 800)} alt="Primer plano de la veta de una madera aceitada" class="size-full object-cover" />
+      </div>
+      <figcaption class="text-xs opacity-70">Fresno, aceitado a mano tres veces.</figcaption>
+    </figure>
+  </div>
+</section>

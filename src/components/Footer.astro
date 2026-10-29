@@ -1,0 +1,42 @@
+---
+const index = [['#coleccion', 'Colección'], ['#objetos', 'Objetos'], ['#proceso', 'Proceso'], ['#diario', 'Diario'], ['#nosotros', 'Nosotros']];
+const service = [['entrega', 'Entrega y devoluciones'], ['cuidados', 'Guía de cuidados'], ['muestras', 'Muestras de materiales'], ['profesionales', 'Programa profesional']];
+const social = [['https://instagram.com', 'Instagram'], ['https://pinterest.com', 'Pinterest'], ['https://are.na', 'Are.na']];
+const head = 'mb-2 text-[11px] uppercase tracking-[0.14em] text-ocre';
+---
+<footer class="flex flex-col gap-[clamp(72px,10vw,140px)] bg-tinta px-page pt-[clamp(80px,10vw,140px)] pb-10 text-crema">
+  <div class="flex flex-wrap justify-between gap-x-[clamp(40px,6vw,96px)] gap-y-14">
+    <div class="flex max-w-110 flex-[1_1_320px] flex-col gap-6">
+      <p class="m-0 font-display text-[clamp(22px,2vw,28px)] leading-tight tracking-[-0.02em]">Una carta cuatro veces al año: objetos nuevos, notas del taller, nada más.</p>
+      <form id="news-form" class="flex flex-wrap gap-1.5">
+        <label class="flex flex-[1_1_200px]"><span class="sr-only">Correo electrónico</span><input name="email" type="email" required placeholder="Tu correo" autocomplete="email" class="flex-1 bg-crema p-4 text-[15px] text-tinta placeholder:text-tinta/55" /></label>
+        <button type="submit" class="bg-ocre px-5 py-4 text-xs uppercase tracking-[0.1em] text-tinta hover:bg-crema">Suscribirme</button>
+      </form>
+      <span id="news-done" hidden class="text-sm text-ocre">Gracias. La próxima carta llega en diciembre.</span>
+    </div>
+    <div class="flex flex-wrap gap-x-18 gap-y-10 text-sm leading-[1.9]">
+      <nav aria-label="Pie de página" class="flex flex-col">
+        <span class={head}>Índice</span>
+        {index.map(([href, label]) => <a href={href} class="hover:text-ocre">{label}</a>)}
+      </nav>
+      <div class="flex flex-col items-start">
+        <span class={head}>Servicio</span>
+        {service.map(([key, label]) => <button data-info={key} class="leading-[1.9] hover:text-ocre">{label}</button>)}
+      </div>
+      <div class="flex flex-col">
+        <span class={head}>Contacto</span>
+        <a href="#visita" class="hover:text-ocre">Via Ventura 14, Milán</a>
+        <a href="mailto:studio@pausa.objects" class="hover:text-ocre">studio@pausa.objects</a>
+        <a href="tel:+390212345678" class="hover:text-ocre">+39 02 1234 5678</a>
+      </div>
+      <div class="flex flex-col">
+        <span class={head}>En otros sitios</span>
+        {social.map(([href, label]) => <a href={href} target="_blank" rel="noopener" class="hover:text-ocre">{label}</a>)}
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-wrap items-end justify-between gap-6">
+    <span class="font-display text-[clamp(72px,14vw,200px)] leading-[0.8] font-semibold tracking-[-0.06em]">pausa</span>
+    <span class="text-xs opacity-70">© 2026 Pausa Objects. Diseñado en Milán. Un proyecto conceptual.</span>
+  </div>
+</footer>

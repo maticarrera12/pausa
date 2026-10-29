@@ -1,0 +1,29 @@
+---
+const u = (id: string, w: number) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+const items = [
+  { w: 'basis-[clamp(240px,30vw,440px)]', ratio: 'aspect-[4/5]', id: '1533035353720-f1c6a75cd8ab', px: 900, alt: 'Primer plano de la veta de la madera', name: 'Fresno', text: 'Curvado al vapor, aceitado, dejado oscurecer.' },
+  { w: 'basis-[clamp(200px,22vw,320px)]', ratio: 'aspect-square', id: '1558618666-fcd25c85cd64', px: 800, alt: 'Primer plano de un tejido con textura', name: 'Bouclé', text: 'Lazos de lana, tejida en Biella.' },
+  { w: 'basis-[clamp(260px,34vw,500px)]', ratio: 'aspect-[3/2]', id: '1600585154340-be6161a56a0c', px: 1000, alt: 'Luz cayendo sobre una superficie de piedra en un interior sereno', name: 'Travertino', text: 'Sin rellenar, para que la piedra conserve sus poros.' },
+  { w: 'basis-[clamp(200px,20vw,300px)]', ratio: 'aspect-[3/4]', id: '1513506003901-1e6a229e2d15', px: 800, alt: 'Lámpara colgante de vidrio con un brillo suave', name: 'Vidrio opal', text: 'Soplado, no moldeado. No hay dos iguales.' },
+];
+---
+<section class="bg-ocre py-[clamp(96px,13vw,190px)] text-tinta">
+  <div data-reveal class="mb-[clamp(40px,5vw,72px)] flex flex-wrap items-end justify-between gap-x-16 gap-y-6 px-page">
+    <div class="flex max-w-115 flex-col gap-5">
+      <span class="eyebrow text-verde">Estudios de materiales</span>
+      <h2 class="m-0 font-display text-[clamp(30px,3.4vw,48px)] leading-[1.04] font-medium tracking-[-0.035em] text-balance">Hechos para mirarlos de cerca.</h2>
+    </div>
+    <p class="m-0 max-w-85 text-[15px] leading-[1.65] opacity-85">Cuatro materiales, elegidos porque envejecen con honestidad. Desliza para verlos de cerca.</p>
+  </div>
+  <div role="region" aria-label="Detalles de materiales" tabindex="0" class="flex snap-x snap-mandatory items-end gap-[clamp(16px,2vw,32px)] overflow-x-auto px-page pb-2 [scrollbar-width:none]">
+    {items.map((it, i) => (
+      <figure data-reveal style={`--d:${i}`} class={`m-0 flex shrink-0 grow-0 snap-start flex-col gap-3.5 ${it.w}`}>
+        <div class={`overflow-hidden ${it.ratio}`}><img loading="lazy" src={u(it.id, it.px)} alt={it.alt} class="size-full object-cover" /></div>
+        <figcaption class="flex flex-col gap-1">
+          <span class="font-display text-base">{it.name}</span>
+          <span class="text-[13px] leading-normal opacity-75">{it.text}</span>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

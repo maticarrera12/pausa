@@ -1,0 +1,54 @@
+---
+import { products, formatEur } from '../data/products';
+import { filters } from '../data/content';
+const p = products;
+const imgCls = 'size-full object-cover transition-transform duration-500 ease-[cubic-bezier(.23,1,.32,1)] hover:scale-[1.03]';
+const addCls = 'link-action text-verde underline underline-offset-5 hover:text-tinta';
+const detCls = 'link-action opacity-70 hover:opacity-100';
+const titleCls = 'm-0 font-display font-medium tracking-[-0.02em]';
+const short: Record<string, string> = {
+  arco: 'Una silla de comedor cuyo respaldo es un único arco de fresno curvado al vapor.',
+  tondo: 'Un disco de travertino en equilibrio sobre una columna de roble torneado.',
+  ceppo: 'Tres patas, un asiento, ningún tornillo.',
+  lume: 'Vidrio opal soplado a boca sobre un tallo de acero cepillado.',
+  piano: 'Un plano bajo de roble, a 32 centímetros del suelo: la altura de una conversación.',
+};
+const items = [
+  { id: 'arco', article: 'flex-[3_1_420px]', box: 'aspect-[5/4] bg-primario', title: 'text-[22px]', desc: 'max-w-95' },
+  { id: 'tondo', article: 'max-w-105 flex-[2_1_280px] mt-[clamp(0px,12vw,180px)]', box: 'aspect-[3/4] bg-ocre p-[12%] box-border', title: 'text-[22px]', desc: '' },
+  { id: 'ceppo', article: 'max-w-80 flex-[1_1_220px] ml-[clamp(0px,6vw,96px)]', box: 'aspect-square bg-white', title: 'text-xl', desc: '' },
+  { id: 'lume', article: 'max-w-75 flex-[1_1_220px] mt-[clamp(0px,9vw,140px)]', box: 'aspect-[2/3] bg-tinta', title: 'text-xl', desc: '' },
+  { id: 'piano', article: 'flex-[2_1_360px]', box: 'aspect-[16/10] bg-primario', title: 'text-[22px]', desc: 'max-w-95' },
+];
+---
+<section id="objetos" class="bg-crema px-page pt-[clamp(48px,6vw,96px)] pb-[clamp(96px,13vw,190px)]">
+  <div data-reveal class="mb-[clamp(48px,6vw,88px)] flex flex-wrap items-end justify-between gap-6">
+    <div class="flex flex-col gap-3.5">
+      <h2 class="m-0 font-display text-[clamp(28px,2.8vw,40px)] font-medium tracking-[-0.03em]">Objetos destacados</h2>
+      <span class="eyebrow opacity-70">Hechos por encargo en 4–6 semanas</span>
+    </div>
+    <div role="group" aria-label="Filtrar objetos" class="flex flex-wrap gap-1.5">
+      {filters.map((f, i) => (
+        <button data-filter={f.key} aria-pressed={i === 0 ? 'true' : 'false'} class="chip link-action min-h-10 px-4 py-2.5">{f.label}</button>
+      ))}
+    </div>
+  </div>
+  <div class="flex flex-wrap items-start gap-x-[clamp(24px,5vw,80px)] gap-y-18">
+    {items.map((it, i) => (
+      <article data-card data-cat={p[it.id].cat} data-reveal style={`--d:${i % 3}`} class={`flex flex-col gap-4.5 ${it.article}`}>
+        <button data-open-product={it.id} aria-label={`Ver ${p[it.id].name}`} class={`block overflow-hidden ${it.box}`}>
+          <img loading="lazy" src={p[it.id].img} alt={p[it.id].alt} class={imgCls} />
+        </button>
+        <div class="flex items-baseline justify-between gap-4">
+          <h3 class={`${titleCls} ${it.title}`}>{p[it.id].name}</h3>
+          <span class="font-display text-base">{formatEur(p[it.id].price)}</span>
+        </div>
+        <p class={`m-0 text-sm leading-[1.6] opacity-80 ${it.desc}`}>{short[it.id]}</p>
+        <div class="flex gap-6">
+          <button data-add={it.id} class={addCls}>Añadir a la bolsa</button>
+          <button data-open-product={it.id} class={detCls}>Detalles y acabados</button>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

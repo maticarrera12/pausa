@@ -1,0 +1,35 @@
+---
+const field = 'bg-crema p-4 text-base normal-case tracking-normal text-tinta';
+const label = 'flex flex-col gap-2 text-xs uppercase tracking-[0.1em]';
+---
+<section id="visita" class="flex flex-wrap items-start gap-x-[clamp(40px,7vw,120px)] gap-y-16 bg-primario px-page py-[clamp(96px,13vw,190px)] text-tinta">
+  <div data-reveal class="flex max-w-115 flex-[1_1_320px] flex-col gap-7">
+    <span class="eyebrow">Showroom</span>
+    <h2 class="m-0 font-display text-[clamp(32px,3.6vw,52px)] leading-[1.02] font-medium tracking-[-0.035em] text-balance">Ven a sentarte en algo.</h2>
+    <p class="m-0 text-base leading-[1.65]">Todos los objetos de la colección, en todos los acabados, en una antigua imprenta de Porta Romana. Las visitas duran unos cuarenta minutos y siempre hay café.</p>
+    <div class="flex flex-wrap gap-x-12 gap-y-6 text-sm leading-[1.7]">
+      <div class="flex flex-col"><span class="text-[11px] uppercase tracking-[0.14em] opacity-70">Dirección</span><span>Via Ventura 14</span><span>20134 Milán</span></div>
+      <div class="flex flex-col"><span class="text-[11px] uppercase tracking-[0.14em] opacity-70">Horario</span><span>Jueves a sábado</span><span>10:00 – 18:30</span></div>
+    </div>
+  </div>
+  <div data-reveal style="--d:1" class="flex max-w-130 flex-[1_1_340px] flex-col gap-5">
+    <form id="visit-form" class="flex flex-col gap-3.5">
+      <label class={label}>Nombre<input name="name" required autocomplete="name" class={field} /></label>
+      <label class={label}>Correo electrónico<input name="email" type="email" required autocomplete="email" class={field} /></label>
+      <div class="flex flex-wrap gap-3.5">
+        <label class={`${label} flex-[1_1_160px]`}>Día
+          <select name="day" class={field}><option>Jueves</option><option>Viernes</option><option>Sábado</option></select>
+        </label>
+        <label class={`${label} flex-[1_1_160px]`}>Hora
+          <select name="time" class={field}><option>10:00</option><option>12:00</option><option>14:30</option><option>17:00</option></select>
+        </label>
+      </div>
+      <button type="submit" class="mt-2 flex justify-between bg-ocre px-5 py-4.5 text-left text-[13px] uppercase tracking-[0.1em] hover:bg-crema">Solicitar una visita<span>→</span></button>
+    </form>
+    <div id="visit-done" hidden class="flex-col gap-3.5 bg-ocre p-8 [&:not([hidden])]:flex">
+      <span class="font-display text-[26px] tracking-[-0.02em]">Nos vemos el <span id="visit-when"></span>, <span id="visit-name"></span>.</span>
+      <span class="text-sm leading-[1.6]">Te confirmaremos por correo en un día. Si cambian tus planes, responde a ese mensaje.</span>
+      <button id="visit-reset" class="link-action self-start underline underline-offset-5">Reservar otro horario</button>
+    </div>
+  </div>
+</section>
